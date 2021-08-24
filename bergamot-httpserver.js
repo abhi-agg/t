@@ -33,6 +33,7 @@ app.get('/', cors(), function(req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
     res.header('Cross-Origin-Embedder-Policy','require-corp');
     res.header('Cross-Origin-Opener-Policy','same-origin');
+    res.header('Cross-Origin-Resource-Policy','same-origin');
 });
 
 app.get('/*.*' , cors(), function(req, res) {
@@ -48,6 +49,9 @@ function serveFile(res, pathName, mime) {
             res.writeHead(500, {"Content-Type": "text/plain"});
             return res.end('Error loading ' + pathName + " with Error: " + err);
         }
+        res.header('Cross-Origin-Embedder-Policy','require-corp');
+        res.header('Cross-Origin-Opener-Policy','same-origin');
+        res.header('Cross-Origin-Resource-Policy','same-origin');
         res.writeHead(200, {"Content-Type": mime});
         res.end(data);
     });
