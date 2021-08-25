@@ -16,7 +16,7 @@ if (process.argv[2]) {
     port = process.argv[2];
 }
 
-let skipssl = 0;
+let skipssl = 1;
 if (process.argv[3]) {
     skipssl = process.argv[3];
 }
